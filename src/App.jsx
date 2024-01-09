@@ -17,9 +17,9 @@ function App() {
       <hr />
       <ConnectionWithBalance baudRate={baudRate} />
       <hr />
-      <Panel items={items} setItems={setItems}/>      
+      <Panel items={items} setItems={setItems} />      
       <hr />
-      <List items={items} />
+      <List items={items} setItems={setItems} />
     </>
   );
 }

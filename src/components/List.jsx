@@ -1,4 +1,12 @@
 export default function List(props) {
+
+  const removeItemOnList = (id) => {
+    let messageWarning = 'Tem certeza que deseja excluir esse item?';
+    if (confirm(messageWarning) == true) {
+      props.setItems((currentState) => currentState.filter(item => item.id !== id))
+    }
+  }
+
   return (
     <>
       <h3>Listagem</h3>
@@ -7,6 +15,9 @@ export default function List(props) {
           <div key={item.id}>
             <p>{item.part}</p>
             <p>{item.kg}</p>
+            <p>
+              <button onClick={() => removeItemOnList(item.id)}>Remover</button>
+            </p>
           </div>
         ))
       ) : (
