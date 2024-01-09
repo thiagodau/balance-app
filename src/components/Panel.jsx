@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Kilograma from "./Kilograma";
 import TypeBovine from "./TypeBovine";
 import useSaveItem from "../hooks/useSaveItem";
+import ItemsContext from "../contexts/ItemsContext";
 
-export default function Panel(props) {
+export default function Panel() {
+
+  const [items, setItems] = useContext(ItemsContext)
   const [partBovine, setPartBovine] = useState("Dianteiro");
   const [kilograma, setKilograma] = useState(99.999);
 
-  const saveItemOnList = useSaveItem(props.setItems, partBovine, kilograma);
+  const saveItemOnList = useSaveItem(setItems, partBovine, kilograma);
 
   return (
     <>

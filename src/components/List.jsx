@@ -1,9 +1,14 @@
-export default function List(props) {
+import { useContext } from "react";
+import ItemsContext from "../contexts/ItemsContext";
+
+export default function List() {
+
+  const [items, setItems] = useContext(ItemsContext)
 
   const removeItemOnList = (id) => {
     let messageWarning = "Tem certeza que deseja excluir esse item?";
     if (confirm(messageWarning) == true) {
-      props.setItems((currentState) =>
+      setItems((currentState) =>
         currentState.filter((item) => item.id !== id)
       );
     }
@@ -12,8 +17,8 @@ export default function List(props) {
   return (
     <>
       <h3>Listagem</h3>
-      {props.items.length > 0 ? (
-        props.items.map((item) => (
+      {items.length > 0 ? (
+        items.map((item) => (
           <div key={item.id}>
             <p>{item.part}</p>
             <p>{item.kg}</p>
@@ -25,7 +30,7 @@ export default function List(props) {
       ) : (
         <p>Não há items nessa lista.</p>
       )}
-      Total de Items: {props.items.length}
+      Total de Items: {items.length}
     </>
   );
 }
