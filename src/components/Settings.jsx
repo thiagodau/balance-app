@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-export default function Settings() {
-  const [showSettings, setShowSettings] = useState(false);
-  const [baudRate, setBaudRate] = useState(9600);
+import useHandleChange from "../hooks/useHandleChange";
 
-  const handleChange = (event) => {
-    console.log(event.target.value);
-    setBaudRate(event.target.value);
-  };
+export default function Settings({ baudRate, setBaudRate }) {
+  const [showSettings, setShowSettings] = useState(false);
+
+  const handleChange = useHandleChange(setBaudRate);
 
   return (
     <>
@@ -21,10 +19,7 @@ export default function Settings() {
       {showSettings && (
         <>
           <h2>Selecione as configurações: </h2>
-          <p>
-            Para a balança possa conversar com o sistema precisamos do BaudRate.
-            Por padrão é 9600.
-          </p>
+          <label>BaudRate: </label>
           <select value={baudRate} onChange={handleChange}>
             <option value="1200">1200</option>
             <option value="4800">4800</option>
