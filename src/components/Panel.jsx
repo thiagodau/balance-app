@@ -10,9 +10,6 @@ export default function Panel(props) {
 
   const saveItemOnList = useSaveItem(props.setItems, partBovine, kilograma);
 
-  
-
-
   return (
     <>
       <h3>Painel</h3>

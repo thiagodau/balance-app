@@ -1,11 +1,13 @@
 export default function List(props) {
 
   const removeItemOnList = (id) => {
-    let messageWarning = 'Tem certeza que deseja excluir esse item?';
+    let messageWarning = "Tem certeza que deseja excluir esse item?";
     if (confirm(messageWarning) == true) {
-      props.setItems((currentState) => currentState.filter(item => item.id !== id))
+      props.setItems((currentState) =>
+        currentState.filter((item) => item.id !== id)
+      );
     }
-  }
+  };
 
   return (
     <>
@@ -23,6 +25,7 @@ export default function List(props) {
       ) : (
         <p>Não há items nessa lista.</p>
       )}
+      Total de Items: {props.items.length}
     </>
   );
 }

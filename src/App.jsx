@@ -8,7 +8,8 @@ import List from "./components/List";
 
 function App() {
   const [baudRate, setBaudRate] = useState(9600);
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
+
   return (
     <>
       <h1>Sistema de Pesagem com Webserial</h1>
@@ -17,7 +18,7 @@ function App() {
       <hr />
       <ConnectionWithBalance baudRate={baudRate} />
       <hr />
-      <Panel items={items} setItems={setItems} />      
+      <Panel items={items} setItems={setItems} />
       <hr />
       <List items={items} setItems={setItems} />
     </>
