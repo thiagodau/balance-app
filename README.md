@@ -6,7 +6,9 @@ O Objetivo da aplicação é desenvolver um sistema onde possa selecionar o tipo
 A balança que envia os dados através de um cabo RS-232 para a USB do Computador, onde o sistema recebe e faz o tratamento desses dados, transformando os dados que chegam em Buffer para decimal onde podemos ler em Kilogramas (Kg).
 
 Para isso nesse projeto utilizo React e Vite para desenvolvimento da aplicação e para a Conexão e Leitura dos dados utilizo a Api Web Serial do Chrome for Developers, onde a documentação se encontra no link abaixo:
+
 - [WebSerialDocs](https://developer.chrome.com/docs/capabilities/serial?hl=pt-br)
+- [AnotherWebSerialDocs](https://wicg.github.io/serial/)
 
 A API Web Serial oferece aos sites uma maneira de ler e gravar em um dispositivo serial com JavaScript. Eles são conectados por uma porta serial no sistema do usuário(computador) ou por dispositivos USB e Bluetooth removíveis que emulam uma porta serial.
 
