@@ -1,3 +1,5 @@
+import Button from './Button'
+
 export default function ConnectionWithBalance({ baudRate }) {
   let baudRateCurrent = baudRate;
   
@@ -31,7 +33,7 @@ export default function ConnectionWithBalance({ baudRate }) {
   return (
     <>
       <h3>Conexão com a Balança</h3>
-      <button onClick={connectSerial}>Conectar Balança</button>
+      <Button titleOfButton={'Conectar a Balança'} func={connectSerial}/>
     </>
   );
 }

@@ -18,7 +18,7 @@ export default function Settings({ baudRate, setBaudRate }) {
       <label htmlFor="showSettings">Exibir Configurações</label>
       {showSettings && (
         <>
-          <h2>Selecione as configurações: </h2>
+        <br />
           <label>BaudRate: </label>
           <select value={baudRate} onChange={handleChange}>
             <option value="1200">1200</option>

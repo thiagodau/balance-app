@@ -7,6 +7,6 @@ export default function useSaveItem(funcSetHere, partBovine, kilograma) {
     };
     funcSetHere((currentState) => [...currentState, item]);
   };
-
+  
   return saveOnList
 }

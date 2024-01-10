@@ -4,6 +4,7 @@ import Kilograma from "./Kilograma";
 import TypeBovine from "./TypeBovine";
 import useSaveItem from "../hooks/useSaveItem";
 import ItemsContext from "../contexts/ItemsContext";
+import Button from "./Button";
 
 export default function Panel() {
 
@@ -18,7 +19,7 @@ export default function Panel() {
       <h3>Painel</h3>
       <TypeBovine partBovine={partBovine} setPartBovine={setPartBovine} />
       <Kilograma kilograma={kilograma}/>
-      <button onClick={saveItemOnList}>Gravar na lista</button>
+      <Button titleOfButton={'Gravar na lista'} func={saveItemOnList} />
     </>
   );
 }
