@@ -4,9 +4,8 @@ import Button from "./Button";
 export default function ConnectionWithBalance({ baudRate }) {
   let baudRateCurrent = baudRate;
 
-
   const [statusBalance, setStatusBalance] = useState(false);
-  const [device, setDevice] = useState()
+  const [device, setDevice] = useState();
 
   //Function to Connect on Serial
   async function connectSerial() {
@@ -15,9 +14,9 @@ export default function ConnectionWithBalance({ baudRate }) {
       await device.open({ baudRate: baudRateCurrent });
       if (device) {
         setStatusBalance(true);
-        setDevice(device)
-        console.log("Dispositivo conectado!");
+        setDevice(device);
         console.log(device.getInfo());
+        console.log("Dispositivo conectado!");
         //readToSerial(device);
       }
       return;
@@ -28,17 +27,20 @@ export default function ConnectionWithBalance({ baudRate }) {
 
   //Function to Disconnect on Serial
   async function disconnectSerial(device) {
-    await device.close();
-    setStatusBalance(false);
-    console.log("Dispositivo desconectado!");
+    let text = 'Tem certeza que deseja desconectar-se da balança?'
+    if(confirm(text)) {
+      await device.close();
+      setStatusBalance(false);
+      console.log("Dispositivo desconectado!");
+    }
   }
 
   async function readToSerial(device) {
     const reader = device.readable.getReader();
-    while(true) {
+    while (true) {
       const { value, done } = await reader.read();
       console.log(value);
-      if(done) {
+      if (done) {
         //aqui para de ler
         break;
       }
@@ -51,8 +53,12 @@ export default function ConnectionWithBalance({ baudRate }) {
         Conexão com a Balança - Status:{" "}
         {statusBalance ? "Conectada!" : "Desconectada!"}
       </h3>
-      <Button titleOfButton={"Conectar a Balança"} func={connectSerial} />
-      <button onClick={() => disconnectSerial(device)}>Desconectar</button>
+
+      {!statusBalance ? (
+        <Button titleOfButton={"Conectar a Balança"} func={connectSerial} />
+      ) : (
+        <button onClick={() => disconnectSerial(device)}>Desconectar</button>
+      )}
     </>
   );
 }
