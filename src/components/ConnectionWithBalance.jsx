@@ -7,17 +7,24 @@ export default function ConnectionWithBalance({ baudRate }) {
   const [statusBalance, setStatusBalance] = useState(false);
   const [device, setDevice] = useState();
 
+  async function onSerialDisconnected(e) {
+    setStatusBalance(false);
+    console.log(e, "Disconnected!");
+    console.log("Dispositivo desconectado!");
+  }
+
   //Function to Connect on Serial
   async function connectSerial() {
     try {
-      let device = await navigator.serial.requestPort();
-      await device.open({ baudRate: baudRateCurrent });
-      if (device) {
+      let port = await navigator.serial.requestPort();
+      await port.open({ baudRate: baudRateCurrent });
+      port.addEventListener("disconnect", onSerialDisconnected);
+      if (port) {
         setStatusBalance(true);
-        setDevice(device);
-        console.log(device.getInfo());
+        setDevice(port);
+        console.log(port.getInfo());
         console.log("Dispositivo conectado!");
-        //readToSerial(device);
+        //readToSerial(port);
       }
       return;
     } catch (error) {
@@ -27,8 +34,8 @@ export default function ConnectionWithBalance({ baudRate }) {
 
   //Function to Disconnect on Serial
   async function disconnectSerial(device) {
-    let text = 'Tem certeza que deseja desconectar-se da balança?'
-    if(confirm(text)) {
+    let text = "Tem certeza que deseja desconectar-se da balança?";
+    if (confirm(text)) {
       await device.close();
       setStatusBalance(false);
       console.log("Dispositivo desconectado!");
