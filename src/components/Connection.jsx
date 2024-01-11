@@ -3,11 +3,11 @@ import Button from "./Button";
 
 import PropTypes from "prop-types";
 
-ConnectionWithBalance.propTypes = {
+Connection.propTypes = {
   baudRate: PropTypes.number,
 };
 
-export default function ConnectionWithBalance({ baudRate }) {
+export default function Connection({ baudRate }) {
   let baudRateCurrent = baudRate;
 
   const [statusBalance, setStatusBalance] = useState(false);

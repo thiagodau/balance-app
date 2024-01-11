@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 
 import Settings from "./components/Settings";
-import ConnectionWithBalance from "./components/ConnectionWithBalance";
+import Connection from "./components/Connection";
 import Panel from "./components/Panel";
 import List from "./components/List";
 
@@ -34,7 +34,7 @@ function App() {
         <hr />
         <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
         <hr />
-        <ConnectionWithBalance baudRate={+baudRate} />
+        <Connection baudRate={+baudRate} />
         <hr />
         <Panel />
         <hr />
