@@ -1,6 +1,12 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import useHandleChange from "../hooks/useHandleChange";
+
+Settings.propTypes = {
+  baudRate: PropTypes.number,
+  setBaudRate: PropTypes.func
+};
 
 export default function Settings({ baudRate, setBaudRate }) {
   const [showSettings, setShowSettings] = useState(false);
@@ -18,7 +24,7 @@ export default function Settings({ baudRate, setBaudRate }) {
       <label htmlFor="showSettings">Exibir Configurações</label>
       {showSettings && (
         <>
-        <br />
+          <br />
           <label>BaudRate: </label>
           <select value={baudRate} onChange={handleChange}>
             <option value="1200">1200</option>

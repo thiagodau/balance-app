@@ -1,6 +1,12 @@
 import { useState } from "react";
 import Button from "./Button";
 
+import PropTypes from "prop-types";
+
+ConnectionWithBalance.propTypes = {
+  baudRate: PropTypes.number,
+};
+
 export default function ConnectionWithBalance({ baudRate }) {
   let baudRateCurrent = baudRate;
 

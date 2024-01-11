@@ -32,9 +32,9 @@ function App() {
       >
         <h1>Sistema de Pesagem com Webserial</h1>
         <hr />
-        <Settings baudRate={baudRate} setBaudRate={setBaudRate} />
+        <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
         <hr />
-        <ConnectionWithBalance baudRate={baudRate} />
+        <ConnectionWithBalance baudRate={+baudRate} />
         <hr />
         <Panel />
         <hr />

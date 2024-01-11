@@ -11,8 +11,8 @@ export default function List() {
     if (confirm(messageWarning) == true) {
       setItems((currentState) => {
         const newState = currentState.filter((item) => item.id !== id);
-        localStorage.setItem('bapp-items', JSON.stringify(newState))
-        return newState
+        localStorage.setItem("bapp-items", JSON.stringify(newState));
+        return newState;
       });
     }
   };
@@ -26,7 +26,11 @@ export default function List() {
       <h3>Listagem</h3>
       {items.length > 0 ? (
         items.map((item) => (
-          <Item item={item} removeItemOnList={() => removeItemOnList(item.id)} key={item.id} />
+          <Item
+            key={item.id}
+            item={item}
+            removeItemOnList={() => removeItemOnList(item.id)}
+          />
         ))
       ) : (
         <p>Não há items nessa lista.</p>
