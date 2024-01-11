@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import ItemsContext from "../contexts/ItemsContext";
 import Item from "./Item";
+import Amount from "./Amount";
 
 export default function List() {
   const [items, setItems, getTotalAndSumDianteiro, getTotalAndSumTraseiro] =
@@ -17,10 +18,6 @@ export default function List() {
     }
   };
 
-  let totalGeralKg = (
-    +getTotalAndSumDianteiro.totalKg + +getTotalAndSumTraseiro.totalKg
-  ).toFixed(3);
-
   return (
     <>
       <h3>Listagem</h3>
@@ -35,15 +32,13 @@ export default function List() {
       ) : (
         <p>Não há items nessa lista.</p>
       )}
-      Total de Dianteiro: {getTotalAndSumDianteiro.totalKg}KG e sua quantidade é{" "}
-      {getTotalAndSumDianteiro.amount}
-      <br />
-      Total de Traseiro: {getTotalAndSumTraseiro.totalKg}KG e sua quantidade é{" "}
-      {getTotalAndSumTraseiro.amount}
-      <br />
-      Soma total: {totalGeralKg == "NaN" ? 0 : totalGeralKg}KG
-      <br />
-      Total de Items: {items.length}
+      <hr />
+      <Amount
+        items={items}
+        getTotalAndSumDianteiro={getTotalAndSumDianteiro}
+        getTotalAndSumTraseiro={getTotalAndSumTraseiro}
+      />
+      
     </>
   );
 }
