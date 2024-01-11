@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ItemsContext from "../contexts/ItemsContext";
 import Item from "./Item";
 import Amount from "./Amount";

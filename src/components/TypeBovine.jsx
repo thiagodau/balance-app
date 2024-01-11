@@ -1,5 +1,6 @@
-import useHandleChange from "../hooks/useHandleChange";
 import PropTypes from "prop-types";
+
+import useHandleChange from "../hooks/useHandleChange";
 
 TypeBovine.propTypes = {
   partBovine: PropTypes.string,
