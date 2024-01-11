@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import ItemsContext from "../contexts/ItemsContext";
+import Item from "./Item";
 
 export default function List() {
   const [items, setItems, getTotalAndSumDianteiro, getTotalAndSumTraseiro] =
@@ -25,13 +26,7 @@ export default function List() {
       <h3>Listagem</h3>
       {items.length > 0 ? (
         items.map((item) => (
-          <div key={item.id}>
-            <p>{item.part}</p>
-            <p>{item.kg}</p>
-            <p>
-              <button onClick={() => removeItemOnList(item.id)}>Remover</button>
-            </p>
-          </div>
+          <Item item={item} removeItemOnList={() => removeItemOnList(item.id)} key={item.id} />
         ))
       ) : (
         <p>Não há items nessa lista.</p>
