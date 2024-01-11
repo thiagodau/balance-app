@@ -5,8 +5,12 @@ export default function useSaveItem(funcSetHere, partBovine, kilograma) {
       part: partBovine,
       kg: kilograma,
     };
-    funcSetHere((currentState) => [...currentState, item]);
+    funcSetHere((currentState) => {
+      const newState = [...currentState, item];
+      localStorage.setItem("bapp-items", JSON.stringify(newState));
+      return newState;
+    });
   };
-  
-  return saveOnList
+
+  return saveOnList;
 }

@@ -11,14 +11,25 @@ import useGetTotalKg from "./hooks/useGetTotalKg";
 
 function App() {
   const [baudRate, setBaudRate] = useState(9600);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(() => {
+    const storageItems = localStorage.getItem("bapp-items");
+    if (!storageItems) return [];
+    return JSON.parse(storageItems);
+  });
 
-  const getTotalAndSumDianteiro = useGetTotalKg(items, 'Dianteiro');
-  const getTotalAndSumTraseiro = useGetTotalKg(items, 'Traseiro');
-  
+  const getTotalAndSumDianteiro = useGetTotalKg(items, "Dianteiro");
+  const getTotalAndSumTraseiro = useGetTotalKg(items, "Traseiro");
+
   return (
     <div className="container">
-      <ItemsContext.Provider value={[items, setItems, getTotalAndSumDianteiro, getTotalAndSumTraseiro]}>
+      <ItemsContext.Provider
+        value={[
+          items,
+          setItems,
+          getTotalAndSumDianteiro,
+          getTotalAndSumTraseiro,
+        ]}
+      >
         <h1>Sistema de Pesagem com Webserial</h1>
         <hr />
         <Settings baudRate={baudRate} setBaudRate={setBaudRate} />
