@@ -74,7 +74,6 @@ export default function Connection({ baudRate, setKilograma }) {
       //reader.releaseLock();
       console.log("chamou finally...");
     }
-
   }
 
   return (
@@ -89,6 +88,21 @@ export default function Connection({ baudRate, setKilograma }) {
       ) : (
         <button onClick={() => disconnectSerial(device)}>Desconectar</button>
       )}
+
+      {localStorage.length > 0 ? (
+        <button
+          onClick={() => {
+            let text =
+              "Isso irá excluir todos os items e desconectar da balança, tem certeza que deseja fazer isso?";
+            if (confirm(text)) {
+              localStorage.clear();
+              location.reload();
+            }
+          }}
+        >
+          Remover todos os items
+        </button>
+      ) : null}
     </>
   );
 }
