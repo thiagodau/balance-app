@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 Amount.propTypes = {
   items: PropTypes.array,
-  getTotalAndSumDianteiro: PropTypes.object,
-  getTotalAndSumTraseiro: PropTypes.object,
+  getTotalAndSumDianteiro: PropTypes.any,
+  getTotalAndSumTraseiro: PropTypes.any,
 };
 
 export default function Amount({

@@ -38,7 +38,7 @@ function App() {
         <hr />
         <Connection baudRate={+baudRate} setKilograma={setKilograma}/>
         <hr />
-        <Panel kilograma={kilograma} />
+        <Panel kilograma={kilograma} setItems={setItems} />
         <hr />
         <List />
         <hr />
