@@ -18,11 +18,10 @@ export default function Panel({ kilograma, setItems }) {
   const saveItemOnList = useSaveItem(setItems, partBovine, kilograma);
 
   return (
-    <>
-      <h3>Painel</h3>
+    <div className="panel">
       <TypeBovine partBovine={partBovine} setPartBovine={setPartBovine} />
       <Kilograma kilograma={kilograma} />
       <Button titleOfButton={"Gravar na lista"} func={saveItemOnList} />
-    </>
+    </div>
   );
 }

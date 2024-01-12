@@ -12,6 +12,11 @@ export default function useSaveItem(funcSet, partBovine, kilograma) {
       localStorage.setItem("bapp-items", JSON.stringify(newState));
       return newState;
     });
+
+    //const element = document.getElementById("positionBottom");
+    //element.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+    var heightPage = document.body.scrollHeight;
+    window.scrollTo(0 , heightPage);
   };
 
   return saveOnList;

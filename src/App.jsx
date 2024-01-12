@@ -33,26 +33,24 @@ function App() {
           getTotalAndSumTraseiro,
         ]}
       >
-        <h1>Sistema de Pesagem com Webserial</h1>
-        <hr />
-        <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
-        <hr />
-        <Connection
-          baudRate={+baudRate}
-          setKilograma={setKilograma}
-          statusBalance={statusBalance}
-          setStatusBalance={setStatusBalance}
-        />
-        <hr />
-        {statusBalance ? (
-          <Panel kilograma={kilograma} setItems={setItems} />
-        ) : (
-          <h4>Conecte-se a balança.</h4>
-        )}
-        <hr />
+        <section className="header some">
+          <div className="header-menu">
+            <h1>Sistema de Pesagem com Webserial</h1>
+            <Connection
+              baudRate={+baudRate}
+              setKilograma={setKilograma}
+              statusBalance={statusBalance}
+              setStatusBalance={setStatusBalance}
+            />
+          </div>
+          <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
+          {statusBalance ? (
+            <Panel kilograma={kilograma} setItems={setItems} />
+          ) : (
+            <h4>Conecte-se a balança.</h4>
+          )}
+        </section>
         <List />
-
-        <hr />
       </ItemsContext.Provider>
     </div>
   );

@@ -8,7 +8,12 @@ Connection.propTypes = {
   setKilograma: PropTypes.func,
 };
 
-export default function Connection({ baudRate, setKilograma, statusBalance, setStatusBalance }) {
+export default function Connection({
+  baudRate,
+  setKilograma,
+  statusBalance,
+  setStatusBalance,
+}) {
   let baudRateCurrent = baudRate;
 
   const [device, setDevice] = useState();
@@ -75,17 +80,18 @@ export default function Connection({ baudRate, setKilograma, statusBalance, setS
 
   return (
     <>
-      <h3>
-        Conexão com a Balança - Status:{" "}
-        {statusBalance ? "Conectada!" : "Desconectada!"}
-      </h3>
-
-      {!statusBalance ? (
-        <Button titleOfButton={"Conectar a Balança"} func={connectSerial} />
-      ) : (
-        <button onClick={() => disconnectSerial(device)}>Desconectar</button>
-      )}
-
+      <div style={{ textAlign: 'center'}}>
+        {!statusBalance ? (
+          <Button titleOfButton={"Conectar a Balança"} func={connectSerial} />
+        ) : (
+          <button onClick={() => disconnectSerial(device)}>Desconectar</button>
+        )}
+        <p>
+          <br />
+          Status:
+          {statusBalance ? "Conectada!" : "Desconectada!"}
+        </p>
+      </div>
       {localStorage.length > 0 ? (
         <button
           onClick={() => {

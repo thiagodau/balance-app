@@ -14,17 +14,17 @@ export default function Settings({ baudRate, setBaudRate }) {
   const handleChange = useHandleChange(setBaudRate);
 
   return (
-    <>
+    <div className="back-border">
       <input
         type="checkbox"
         id="showSettings"
         value={showSettings}
         onChange={() => setShowSettings((currentState) => !currentState)}
       />
-      <label htmlFor="showSettings">Exibir Configurações</label>
+
+      <label htmlFor="showSettings">&nbsp; Exibir Configurações &nbsp;</label>
       {showSettings && (
         <>
-          <br />
           <label>BaudRate: </label>
           <select value={baudRate} onChange={handleChange}>
             <option value="1200">1200</option>
@@ -33,6 +33,6 @@ export default function Settings({ baudRate, setBaudRate }) {
           </select>
         </>
       )}
-    </>
+    </div>
   );
 }

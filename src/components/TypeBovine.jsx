@@ -11,7 +11,6 @@ export default function TypeBovine({ partBovine, setPartBovine }) {
   const handleChange = useHandleChange(setPartBovine);
   return (
     <>
-      <label>Pesagem de: </label>
       <select value={partBovine} onChange={handleChange}>
         <option value="Dianteiro">Dianteiro</option>
         <option value="Traseiro">Traseiro</option>

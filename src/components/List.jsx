@@ -19,26 +19,37 @@ export default function List() {
   };
 
   return (
-    <>
-      <h3>Listagem</h3>
-      {items.length > 0 ? (
-        items.map((item) => (
-          <Item
-            key={item.id}
-            item={item}
-            removeItemOnList={() => removeItemOnList(item.id)}
-          />
-        ))
-      ) : (
-        <p>Não há items nessa lista.</p>
-      )}
+    <div className="list">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tipo</th>
+            <th>Peso (Kg)</th>
+            <th className="some">Ação</th>
+          </tr>
+
+          {items.length > 0
+            ? items.map((item) => (
+                <Item
+                  key={item.id}
+                  item={item}
+                  removeItemOnList={() => removeItemOnList(item.id)}
+                />
+              ))
+            : null}
+        </thead>
+      </table>
       <hr />
       <Amount
         items={items}
         getTotalAndSumDianteiro={getTotalAndSumDianteiro}
         getTotalAndSumTraseiro={getTotalAndSumTraseiro}
       />
-      
-    </>
+      <div className="section-buttons some">
+        <button onClick={()=> window.print()}>Imprimir</button>
+        <button onClick={()=> window.print()}>Salvar PDF</button>
+      </div>
+    </div>
   );
 }

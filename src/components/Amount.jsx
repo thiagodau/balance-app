@@ -15,16 +15,35 @@ export default function Amount({
     +getTotalAndSumDianteiro.totalKg + +getTotalAndSumTraseiro.totalKg
   ).toFixed(3);
   return (
-    <>
-      Total de Dianteiro: {getTotalAndSumDianteiro.totalKg}KG e sua quantidade é{" "}
-      {getTotalAndSumDianteiro.amount}
-      <br />
-      Total de Traseiro: {getTotalAndSumTraseiro.totalKg}KG e sua quantidade é{" "}
-      {getTotalAndSumTraseiro.amount}
-      <br />
-      Soma total: {totalGeralKg == "NaN" ? 0 : totalGeralKg}KG
-      <br />
-      Total de Items: {items.length}
-    </>
+    <div className="footer-data">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Total (Kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dianteiro</td>
+            <td>{getTotalAndSumDianteiro.amount} unidades</td>
+            <td>{getTotalAndSumDianteiro.totalKg}KG</td>
+          </tr>
+
+          <tr>
+            <td>Traseiro</td>
+            <td>{getTotalAndSumTraseiro.amount} unidades</td>
+            <td>{getTotalAndSumTraseiro.totalKg}KG</td>
+          </tr>
+
+          <tr>
+            <td>Ambos</td>
+            <td>{items.length} unidades</td>
+            <td>{totalGeralKg == "NaN" ? 0 : totalGeralKg}KG </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }
