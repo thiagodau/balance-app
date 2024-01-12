@@ -8,10 +8,9 @@ Connection.propTypes = {
   setKilograma: PropTypes.func,
 };
 
-export default function Connection({ baudRate, setKilograma }) {
+export default function Connection({ baudRate, setKilograma, statusBalance, setStatusBalance }) {
   let baudRateCurrent = baudRate;
 
-  const [statusBalance, setStatusBalance] = useState(false);
   const [device, setDevice] = useState();
 
   async function onSerialDisconnected(e) {
@@ -64,7 +63,6 @@ export default function Connection({ baudRate, setKilograma }) {
           console.log(kg);
         }
         if (done) {
-          console.log("parou.");
           break;
         }
       }
@@ -72,7 +70,6 @@ export default function Connection({ baudRate, setKilograma }) {
       console.log(error);
     } finally {
       //reader.releaseLock();
-      console.log("chamou finally...");
     }
   }
 

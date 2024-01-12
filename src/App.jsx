@@ -12,6 +12,7 @@ import useGetTotalKg from "./hooks/useGetTotalKg";
 function App() {
   const [baudRate, setBaudRate] = useState(9600);
   const [kilograma, setKilograma] = useState(0);
+  const [statusBalance, setStatusBalance] = useState(false);
 
   const [items, setItems] = useState(() => {
     const storageItems = localStorage.getItem("bapp-items");
@@ -36,11 +37,21 @@ function App() {
         <hr />
         <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
         <hr />
-        <Connection baudRate={+baudRate} setKilograma={setKilograma}/>
+        <Connection
+          baudRate={+baudRate}
+          setKilograma={setKilograma}
+          statusBalance={statusBalance}
+          setStatusBalance={setStatusBalance}
+        />
         <hr />
-        <Panel kilograma={kilograma} setItems={setItems} />
+        {statusBalance ? (
+          <Panel kilograma={kilograma} setItems={setItems} />
+        ) : (
+          <h4>Conecte-se a balança.</h4>
+        )}
         <hr />
         <List />
+
         <hr />
       </ItemsContext.Provider>
     </div>
