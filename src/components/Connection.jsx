@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { bool } from "prop-types";
 
 import Button from "./Button";
 
@@ -41,11 +41,11 @@ export default function Connection({ baudRate, setKilograma }) {
   }
 
   //Function to Disconnect on Serial
-  async function disconnectSerial(device) {
+  async function disconnectSerial() {
     let text = "Tem certeza que deseja desconectar-se da balança?";
     if (confirm(text)) {
-      await device.close();
       setStatusBalance(false);
+      location.reload();
       console.log("Dispositivo desconectado!");
     }
   }
@@ -53,7 +53,7 @@ export default function Connection({ baudRate, setKilograma }) {
   async function readToSerial(port) {
     const reader = port.readable.getReader();
     try {
-      while (true) {
+      while (reader) {
         const { value, done } = await reader.read();
         let unit8Array = value;
         //console.log('Dados: ' + unit8Array)
@@ -61,11 +61,9 @@ export default function Connection({ baudRate, setKilograma }) {
         if (result.length > 5) {
           let kg = +result / 1000;
           setKilograma(kg);
-          console.log(kg)
+          console.log(kg);
         }
-
         if (done) {
-          //aqui para de ler
           console.log("parou.");
           break;
         }
@@ -76,6 +74,7 @@ export default function Connection({ baudRate, setKilograma }) {
       //reader.releaseLock();
       console.log("chamou finally...");
     }
+
   }
 
   return (
