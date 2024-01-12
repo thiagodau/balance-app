@@ -1,7 +1,5 @@
-export default function Kilograma(props) {
-    return (
-        <>
-            <h1>{props.kilograma} KG</h1>
-        </>
-    )
+export default function Kilograma({ kilograma }) {
+  return (
+    <h3>{ kilograma.toFixed(3) } KG</h3>
+  );
 }

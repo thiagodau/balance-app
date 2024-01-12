@@ -11,6 +11,8 @@ import useGetTotalKg from "./hooks/useGetTotalKg";
 
 function App() {
   const [baudRate, setBaudRate] = useState(9600);
+  const [kilograma, setKilograma] = useState(0);
+
   const [items, setItems] = useState(() => {
     const storageItems = localStorage.getItem("bapp-items");
     if (!storageItems) return [];
@@ -34,9 +36,9 @@ function App() {
         <hr />
         <Settings baudRate={+baudRate} setBaudRate={setBaudRate} />
         <hr />
-        <Connection baudRate={+baudRate} />
+        <Connection baudRate={+baudRate} setKilograma={setKilograma}/>
         <hr />
-        <Panel />
+        <Panel kilograma={kilograma} />
         <hr />
         <List />
         <hr />

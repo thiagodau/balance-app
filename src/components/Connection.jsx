@@ -1,13 +1,14 @@
 import { useState } from "react";
-import Button from "./Button";
-
 import PropTypes from "prop-types";
+
+import Button from "./Button";
 
 Connection.propTypes = {
   baudRate: PropTypes.number,
+  setKilograma: PropTypes.func,
 };
 
-export default function Connection({ baudRate }) {
+export default function Connection({ baudRate, setKilograma }) {
   let baudRateCurrent = baudRate;
 
   const [statusBalance, setStatusBalance] = useState(false);
@@ -30,7 +31,8 @@ export default function Connection({ baudRate }) {
         setDevice(port);
         console.log(port.getInfo());
         console.log("Dispositivo conectado!");
-        //readToSerial(port);
+        //le dados da balança...
+        readToSerial(port);
       }
       return;
     } catch (error) {
@@ -48,15 +50,31 @@ export default function Connection({ baudRate }) {
     }
   }
 
-  async function readToSerial(device) {
-    const reader = device.readable.getReader();
-    while (true) {
-      const { value, done } = await reader.read();
-      console.log(value);
-      if (done) {
-        //aqui para de ler
-        break;
+  async function readToSerial(port) {
+    const reader = port.readable.getReader();
+    try {
+      while (true) {
+        const { value, done } = await reader.read();
+        let unit8Array = value;
+        //console.log('Dados: ' + unit8Array)
+        let result = new TextDecoder().decode(unit8Array);
+        if (result.length > 5) {
+          let kg = +result / 1000;
+          setKilograma(kg);
+          console.log(kg)
+        }
+
+        if (done) {
+          //aqui para de ler
+          console.log("parou.");
+          break;
+        }
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //reader.releaseLock();
+      console.log("chamou finally...");
     }
   }
 
