@@ -13,8 +13,6 @@ export default function useSaveItem(funcSet, partBovine, kilograma) {
       return newState;
     });
 
-    //const element = document.getElementById("positionBottom");
-    //element.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
     var heightPage = document.body.scrollHeight;
     window.scrollTo(0 , heightPage);
   };

@@ -7,6 +7,12 @@ export default function List() {
   const [items, setItems, getTotalAndSumDianteiro, getTotalAndSumTraseiro] =
     useContext(ItemsContext);
 
+  const getDate = () => {
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    return today.toLocaleDateString();
+  };
+
   const removeItemOnList = (id) => {
     let messageWarning = "Tem certeza que deseja excluir esse item?";
     if (confirm(messageWarning) == true) {
@@ -23,7 +29,7 @@ export default function List() {
       <table>
         <thead>
           <tr>
-            <th>#</th>
+            <th>{getDate()}</th>
             <th>Tipo</th>
             <th>Peso (Kg)</th>
             <th className="some">Ação</th>
@@ -47,8 +53,8 @@ export default function List() {
         getTotalAndSumTraseiro={getTotalAndSumTraseiro}
       />
       <div className="section-buttons some">
-        <button onClick={()=> window.print()}>Imprimir</button>
-        <button onClick={()=> window.print()}>Salvar PDF</button>
+        <button onClick={() => window.print()}>Imprimir</button>
+        <button onClick={() => window.print()}>Salvar PDF</button>
       </div>
     </div>
   );

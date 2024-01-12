@@ -18,7 +18,7 @@
 
 .container {
   padding: 2rem 5rem;
-  background-color: #E7EEF7;
+  background-color: #e7eef7;
   margin-bottom: 2rem;
 }
 
@@ -34,10 +34,10 @@
 .header-menu {
   display: flex;
   width: 100%;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  font-family: 'Gotham';
+  font-family: "Gotham";
 }
 
 /** SETIINGS */
@@ -45,16 +45,20 @@
   margin: 1rem 0;
   display: flex;
   align-items: center;
-  padding: .7rem;
-  border-radius: .5rem;
-  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.02);
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.02);
 }
 
-.back-border, .back-border input, .back-border label , .back-border select {
-  background-color: #F5F6FA;
+.back-border,
+.back-border input,
+.back-border label,
+.back-border select {
+  background-color: #f5f6fa;
 }
 
-.back-border input, .back-border label {
+.back-border input,
+.back-border label {
   cursor: pointer;
 }
 
@@ -66,19 +70,22 @@
   gap: 2rem;
   padding: 1rem;
   margin: 1rem 0;
-  border-radius: .5rem;
-  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.02);
-
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.02);
 }
 
-.panel, .panel input, .panel label, .panel h3, .panel select {
-  background-color: #F5F6FA;
+.panel,
+.panel input,
+.panel label,
+.panel h3,
+.panel select {
+  background-color: #f5f6fa;
 }
 
 .panel select {
   font-weight: bold;
-  padding: .5rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   border: 1px solid #212b4078;
   cursor: pointer;
 }
@@ -100,8 +107,8 @@
   padding: 1rem 0;
 }
 
-.list table th{
-  padding-bottom: .5rem;
+.list table th {
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid #212b40;
 }
 
@@ -114,10 +121,9 @@
   border: 1px solid #212b40;
 }
 
-.footer-data table tr>td{
+.footer-data table tr > td {
   padding: 0 0;
   border-bottom: 1px solid #212b40;
-
 }
 
 .section-buttons {
@@ -125,7 +131,6 @@
   justify-content: center;
   gap: 2rem;
 }
-
 
 @media print {
   .header {

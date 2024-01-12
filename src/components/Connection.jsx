@@ -88,24 +88,9 @@ export default function Connection({
         )}
         <p>
           <br />
-          Status:
-          {statusBalance ? "Conectada!" : "Desconectada!"}
+          {statusBalance ? (<span style={{color: '#1CC879'}}>Conectada!</span>) : (<span style={{color: '#FE936A'}}>Desconectada!</span>)}
         </p>
       </div>
-      {localStorage.length > 0 ? (
-        <button
-          onClick={() => {
-            let text =
-              "Isso irá excluir todos os items e desconectar da balança, tem certeza que deseja fazer isso?";
-            if (confirm(text)) {
-              localStorage.clear();
-              location.reload();
-            }
-          }}
-        >
-          Remover todos os items
-        </button>
-      ) : null}
     </>
   );
 }
