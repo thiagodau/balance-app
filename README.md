@@ -1,7 +1,10 @@
 ## Sistema de Registro de Pesagem 
 #### React + Vite + WebSerial 
 
-O Objetivo da aplicação é desenvolver um sistema onde possa selecionar o tipo da peça que será pesada (Traseiro ou Dianteiro), ler o peso em tempo real e através de um botão registrar essa informação em uma lista que ao final deve somar as quantidades e seus totais, separadamente e abaixo, os mesmos de todas as peças juntas, gerando assim um relatório a ser impresso.
+![image](https://github.com/thiagodau/balance-app/assets/26436413/614237e5-7e68-4c6c-a91a-24fb7f7f3766)
+
+
+O Objetivo da aplicação é desenvolver um sistema onde possa selecionar o tipo da peça que será pesada (Traseiro ou Dianteiro), ler o peso em tempo real obtido pela balança toledo e através de um botão registrar essa informação em uma lista que ao final deve somar as quantidades e seus totais, separadamente e abaixo, os mesmos de todas as peças juntas, gerando assim um relatório a ser impresso.
 
 A balança que envia os dados através de um cabo RS-232 para a USB do Computador, onde o sistema recebe e faz o tratamento desses dados, transformando os dados que chegam em Buffer para decimal onde podemos ler em Kilogramas (Kg).
 
