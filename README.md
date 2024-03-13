@@ -4,10 +4,7 @@
 Esse projeto realiza o registro de pesos de carcaças bovinas através de uma balança instalada em uma casa de carnes, para a conferência com o romaneio que vem do frigorifico, afim de verificar se as informações contidas no mesmo estão corretas.
 
 ## Demonstração
-
-![image](https://github.com/thiagodau/balance-app/assets/26436413/614237e5-7e68-4c6c-a91a-24fb7f7f3766)
-
-Acima a tela inicial da aplicação, nela temos a logomarca e nome da casa de carnes, um botão para iniciar o processo de pesagem e uma informação de como se inicia o processo.
+https://github.com/thiagodau/balance-app/assets/26436413/27603880-1cc1-4725-849f-e2ea9b6f0a07
 
 ### Como funciona
 
@@ -32,6 +29,11 @@ Ao final, exibe-se um resumo onde temos a quantidade total e separadas por carca
 - Adição de registro de peso fora da balança opcional
 - Impressão do Relatório
 
+## Screenshots
+
+![tela](https://github.com/thiagodau/balance-app/assets/26436413/39764559-03ac-451a-b70f-3d87c8dffcd3)
+
+![image](https://github.com/thiagodau/balance-app/assets/26436413/614237e5-7e68-4c6c-a91a-24fb7f7f3766)
 
 ## Stack utilizada
 
