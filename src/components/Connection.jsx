@@ -1,7 +1,9 @@
 import { useState } from "react";
-import PropTypes, { bool } from "prop-types";
+import PropTypes from "prop-types";
 
 import Button from "./Button";
+
+import { Contact, Plug, Unplug } from "lucide-react";
 
 Connection.propTypes = {
   baudRate: PropTypes.number,
@@ -13,6 +15,8 @@ export default function Connection({
   setKilograma,
   statusBalance,
   setStatusBalance,
+  stability,
+  setStability
 }) {
   let baudRateCurrent = baudRate;
 
@@ -60,12 +64,18 @@ export default function Connection({
       while (reader) {
         const { value, done } = await reader.read();
         let unit8Array = value;
-        //console.log('Dados: ' + unit8Array)
         let result = new TextDecoder().decode(unit8Array);
+
+        if (result.includes("x")) {
+          setStability(false)
+        } else if (result.includes("p")) {
+          setStability(true)
+        }
+
         if (result.length > 5) {
           let kg = +result / 1000;
           setKilograma(kg);
-          console.log(kg);
+          console.log(kg)
         }
         if (done) {
           break;
@@ -78,17 +88,26 @@ export default function Connection({
     }
   }
 
+
   return (
     <>
-      <div style={{ textAlign: 'center'}}>
+      <div style={{ textAlign: "center" }}>
         {!statusBalance ? (
-          <Button titleOfButton={"Conectar a Balança"} func={connectSerial} />
+          <button onClick={connectSerial} style={{display: 'flex', alignItems: 'center', gap: '.5rem'}}>
+            <Plug className="transparent" /> Conectar a Balança
+          </button>
         ) : (
-          <button onClick={() => disconnectSerial(device)}>Desconectar</button>
+          <button id="btnDesconnect" onClick={() => disconnectSerial(device)} style={{display: 'flex', alignItems: 'center', gap: '.5rem'}}>
+            <Unplug className="transparent" /> Desconectar
+          </button>
         )}
         <p>
           <br />
-          {statusBalance ? (<span style={{color: '#1CC879'}}>Conectada!</span>) : (<span style={{color: '#FE936A'}}>Desconectada!</span>)}
+          {statusBalance ? (
+            <span style={{ color: "#1CC879" }}>Conectada!</span>
+          ) : (
+            <span style={{ color: "#FE936A" }}>Desconectada!</span>
+          )}
         </p>
       </div>
     </>

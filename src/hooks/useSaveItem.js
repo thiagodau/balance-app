@@ -5,7 +5,7 @@ export default function useSaveItem(funcSet, partBovine, kilograma) {
       part: partBovine,
       kg: kilograma,
     };
-    console.log(item)
+    console.log(item);
 
     funcSet((currentState) => {
       const newState = [...currentState, item];
@@ -13,8 +13,8 @@ export default function useSaveItem(funcSet, partBovine, kilograma) {
       return newState;
     });
 
-    var heightPage = document.body.scrollHeight;
-    window.scrollTo(0 , heightPage);
+    let el = document.querySelector(".ancora");
+    el.scrollIntoView(true);
   };
 
   return saveOnList;

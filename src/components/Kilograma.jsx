@@ -1,5 +1,8 @@
-export default function Kilograma({ kilograma }) {
+export default function Kilograma({ kilograma, stability }) {
+  const cor = stability ? 'green' : 'orange';
   return (
-    <h3 className="kilogramaToString">{ kilograma.toFixed(3) } KG</h3>
+    <>
+      <h3 style={{ color: cor}} className="kilogramaToString">{kilograma.toFixed(3)} KG</h3>
+    </>
   );
 }

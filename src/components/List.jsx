@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ItemsContext from "../contexts/ItemsContext";
 import Item from "./Item";
 import Amount from "./Amount";
+import AnotherWeight from "./AnotherWeight";
+
+import OptionsPrint from "./OptionsPrint";
 
 export default function List() {
   const [items, setItems, getTotalAndSumDianteiro, getTotalAndSumTraseiro] =
@@ -23,6 +26,12 @@ export default function List() {
       });
     }
   };
+
+  const [extra, setExtra] = useState("");
+
+  const [amountExtra, setAmountExtra] = useState(0);
+
+  const [showExtra, setShowExtra] = useState(false);
 
   return (
     <div className="list">
@@ -46,16 +55,57 @@ export default function List() {
             : null}
         </thead>
       </table>
+      <span className="ancora"></span>
       <hr />
       <Amount
         items={items}
         getTotalAndSumDianteiro={getTotalAndSumDianteiro}
         getTotalAndSumTraseiro={getTotalAndSumTraseiro}
+        extra={extra}
+        amountExtra={amountExtra}
       />
-      <div className="section-buttons some">
-        <button onClick={() => window.print()}>Imprimir</button>
-        <button onClick={() => window.print()}>Salvar PDF</button>
+      <br />
+      <div className="some">
+        <input
+          type="checkbox"
+          id="showExtra"
+          value={showExtra}
+          onChange={() => {
+            setShowExtra((currentState) => !currentState);
+            let heightPage = document.body.scrollHeight;
+            window.scrollTo(0, heightPage);
+          }}
+          style={{ cursor: "pointer" }}
+        />
+
+        <label htmlFor="showExtra" style={{ cursor: "pointer" }}>
+          &nbsp; Outra pesagem &nbsp;
+        </label>
+
+        {showExtra ? (
+          <>
+            <AnotherWeight
+              extra={extra}
+              setExtra={setExtra}
+              amountExtra={amountExtra}
+              setAmountExtra={setAmountExtra}
+            />
+            &nbsp;
+            <button
+              onClick={() => {
+                setShowExtra((currentState) => !currentState);
+                let element = document.querySelector("#showExtra");
+                element.checked = false;
+              }}
+            >
+              Salvar
+            </button>
+          </>
+        ) : null}
       </div>
+
+      <br />
+      <OptionsPrint />
     </div>
   );
 }

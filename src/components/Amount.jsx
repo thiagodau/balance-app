@@ -10,6 +10,8 @@ export default function Amount({
   items,
   getTotalAndSumDianteiro,
   getTotalAndSumTraseiro,
+  extra,
+  amountExtra,
 }) {
   let totalGeralKg = (
     +getTotalAndSumDianteiro.totalKg + +getTotalAndSumTraseiro.totalKg
@@ -42,6 +44,13 @@ export default function Amount({
             <td>{items.length} unidades</td>
             <td>{totalGeralKg == "NaN" ? 0 : totalGeralKg}KG </td>
           </tr>
+          {extra.length > 0 ? (
+            <tr>
+              <td>Outros</td>
+              <td>{extra}</td>
+              <td>{amountExtra}KG </td>
+            </tr>
+          ) : null}
         </tbody>
       </table>
     </div>

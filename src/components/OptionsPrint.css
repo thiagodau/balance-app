@@ -1,0 +1,20 @@
+.section-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.section-buttons button {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+@media print {
+    .section-buttons {display: none;}
+}
