@@ -60,22 +60,27 @@ export default function Connection({
 
   async function readToSerial(port) {
     const reader = port.readable.getReader();
+    let alertDisplayed = false;
+
     try {
       while (reader) {
         const { value, done } = await reader.read();
         let unit8Array = value;
         let result = new TextDecoder().decode(unit8Array);
 
-        if (result.includes("x")) {
+        if (result.includes("x") && alertDisplayed == false) {
           setStability(false)
-        } else if (result.includes("p")) {
-          setStability(true)
+        } else if (result.includes("p") && alertDisplayed == false) {
+          setStability(true);
+          alertDisplayed = true;
+          console.log("contagem de 5 segundos iniciada...");
+          setTimeout(() => (alertDisplayed = false), 5000);
         }
 
-        if (result.length > 5) {
+        if (result.length > 5 && !isNaN(result) && !alertDisplayed) {
           let kg = +result / 1000;
           setKilograma(kg);
-          console.log(kg)
+          console.log('KG: ', kg)
         }
         if (done) {
           break;
@@ -93,11 +98,11 @@ export default function Connection({
     <>
       <div style={{ textAlign: "center" }}>
         {!statusBalance ? (
-          <button onClick={connectSerial} style={{display: 'flex', alignItems: 'center', gap: '.5rem'}}>
+          <button onClick={connectSerial} style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
             <Plug className="transparent" /> Conectar a Balança
           </button>
         ) : (
-          <button id="btnDesconnect" onClick={() => disconnectSerial(device)} style={{display: 'flex', alignItems: 'center', gap: '.5rem'}}>
+          <button id="btnDesconnect" onClick={() => disconnectSerial(device)} style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
             <Unplug className="transparent" /> Desconectar
           </button>
         )}
