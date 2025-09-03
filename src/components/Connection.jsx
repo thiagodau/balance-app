@@ -60,7 +60,7 @@ export default function Connection({
 
   async function readToSerial(port) {
     const reader = port.readable.getReader();
-    let alertDisplayed = false;
+    //let alertDisplayed = false;
 
     try {
       while (reader) {
@@ -68,16 +68,17 @@ export default function Connection({
         let unit8Array = value;
         let result = new TextDecoder().decode(unit8Array);
 
-        if (result.includes("x") && alertDisplayed == false) {
+        if (result.includes("x")) {
           setStability(false)
-        } else if (result.includes("p") && alertDisplayed == false) {
+        } else if (result.includes("p")) {
           setStability(true);
-          alertDisplayed = true;
-          console.log("contagem de 5 segundos iniciada...");
-          setTimeout(() => (alertDisplayed = false), 5000);
+          //alertDisplayed = true;
+          //console.log("contagem de 5 segundos iniciada...");
+          //setTimeout(() => (alertDisplayed = false), 2500);
         }
 
-        if (result.length > 5 && !isNaN(result) && !alertDisplayed) {
+        if (result.length > 5 && !isNaN(result)) {
+          console.log('result: ', result)
           let kg = +result / 1000;
           setKilograma(kg);
           console.log('KG: ', kg)
